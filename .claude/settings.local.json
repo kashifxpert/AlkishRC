@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(node -v)",
+      "PowerShell(npm -v)",
+      "PowerShell(Get-Command nvm -ErrorAction SilentlyContinue; nvm version 2>&1; Get-ChildItem \"C:\\\\Program Files\\\\nodejs\" -ErrorAction SilentlyContinue; Get-ChildItem \"$env:APPDATA\\\\nvm\" -ErrorAction SilentlyContinue; Get-ChildItem \"C:\\\\nvm4w\" -ErrorAction SilentlyContinue -Recurse -Depth 1)",
+      "PowerShell(nvm use 24.20.0 2>&1)",
+      "Bash(mkdir -p \"d:/RemoteConrtrol/AlkishRC\" && ls \"d:/RemoteConrtrol\")",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Program Files \\\\\\(x86\\\\\\)/**)",
+      "Read(//c/Users/Pc/**)",
+      "Read(//c/Users/Pc/AppData/Local/Programs/**)",
+      "Bash(find \"/c\" -maxdepth 1 -iname \"*jdk*\")",
+      "Bash(find \"/c/Program Files/Android\" -maxdepth 3 -iname \"jbr\" 2>/dev/null *)",
+      "Read(//c/Users/**)",
+      "PowerShell(winget --version 2>&1)",
+      "Bash(powershell.exe -NoProfile -Command 'Get-Process | Where-Object { $_.Path -like '\\\\''*jdk*'\\\\'' -or $_.ProcessName -like '\\\\''*java*'\\\\'' } | Select-Object Id, ProcessName, Path')",
+      "PowerShell(Stop-Process -Id 18652 -Force)",
+      "PowerShell(Get-Process -Id 18652 -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-Process | Where-Object { $_.ProcessName -match 'java|gradle' } | Select-Object Id, ProcessName)",
+      "PowerShell(Get-Process | Where-Object { $_.ProcessName -match 'qemu|emulator' } | Select-Object Id, ProcessName, StartTime)",
+      "PowerShell(Stop-Process -Id 22024,25272 -Force -ErrorAction SilentlyContinue; Start-Sleep -Seconds 2; Get-Process | Where-Object { $_.ProcessName -match 'qemu|emulator' })"
+    ],
+    "additionalDirectories": [
+      "d:\\RemoteConrtrol"
+    ]
+  }
+}

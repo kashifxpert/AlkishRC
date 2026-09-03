@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Alkish RC</string>
+    <string name="title_activity_main">Alkish RC</string>
+    <string name="package_name">com.alkish.rccontroller</string>
+    <string name="custom_url_scheme">com.alkish.rccontroller</string>
+</resources>

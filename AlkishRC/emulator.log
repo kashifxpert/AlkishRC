@@ -1,0 +1,416 @@
+INFO         | Android emulator version 36.1.9.0 (build_id 13823996) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath C:\Users\Pc\AppData\Local\Android\Sdk\system-images\android-35\google_apis_playstore\x86_64\
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: a06f:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: a06f:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: a06f:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 187b:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 187b:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 187b:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: a081:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: a081:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: a081:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 9888:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 9888:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 9888:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: b08e:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: b08e:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: b08e:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 909c:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 909c:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Ignore IPv6 address: 909c:65cd:ed01:0:a06f:65cd:ed01:0
+INFO         | Guest GLES Driver: Auto (ext controls)
+library_mode host gpu mode host
+INFO         | emuglConfig_get_vulkan_hardware_gpu_support_info: Found physical GPU 'NVIDIA GeForce GTX 1060 3GB', type: VK_PHYSICAL_DEVICE_TYPE_DISCRETE_GPU, apiVersion: 1.4.312, driverVersion: 581.8
+
+INFO         | Enabled VulkanAllocateHostMemory feature for gpu vendor NVIDIA GeForce GTX 1060 3GB on Linux
+
+INFO         | GPU device local memory = 3179MB
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasCompatibleHypervisor
+INFO         |      Ok: Hypervisor compatibility to run avd: `Medium_Phone_API_35` are met
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `Medium_Phone_API_35` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU requirements to run avd: `Medium_Phone_API_35` are passed
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `Medium_Phone_API_35` are met
+INFO         | Critical: Failed to load opengl32sw (The specified module could not be found.) (:0, )
+INFO         | Warning: Software OpenGL failed. Falling back to system OpenGL. (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_btn_xr_environment_living_room_day_clicked() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_btn_xr_environment_living_room_night_clicked() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_new_posture_requested(int) (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_posture_selection_dialog() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_new_resizable_requested(PresetEmulatorSizeType) (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_resizable_dialog() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_xr_environment_mode_changed(int) (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_xr_environment_mode_dialog() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_xr_input_mode_changed(int) (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_xr_input_mode_dialog() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_sleep_timer_done() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_unfold_timer_done() (:0, )
+INFO         | Storing crashdata in: C:\Users\Pc\AppData\Local\Temp\\AndroidEmulI0831 21:08:49.855015   18508 opengles.cpp:291] android_startOpenglesRenderer: gpu info
+I0831 21:08:49.855051   18508 opengles.cpp:292] GPU #1
+  Make: 10de
+  Model: NVIDIA GeForce GTX 1060 3GB
+  Device ID: 1c02
+
+I0831 21:08:50.146254   18508 userspace-boot-properties.cpp:766] Userspace boot properties:
+I0831 21:08:50.146281   18508 userspace-boot-properties.cpp:770]   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+I0831 21:08:50.146289   18508 userspace-boot-properties.cpp:770]   androidboot.dalvik.vm.heapsize=512m
+I0831 21:08:50.146296   18508 userspace-boot-properties.cpp:770]   androidboot.debug.hwui.renderer=skiagl
+I0831 21:08:50.146302   18508 userspace-boot-properties.cpp:770]   androidboot.hardware=ranchu
+I0831 21:08:50.146308   18508 userspace-boot-properties.cpp:770]   androidboot.hardware.gltransport=pipe
+I0831 21:08:50.146314   18508 userspace-boot-properties.cpp:770]   androidboot.hardware.vulkan=ranchu
+I0831 21:08:50.146321   18508 userspace-boot-properties.cpp:770]   androidboot.logcat=*:V
+I0831 21:08:50.146327   18508 userspace-boot-properties.cpp:770]   androidboot.opengles.version=196609
+I0831 21:08:50.146333   18508 userspace-boot-properties.cpp:770]   androidboot.qemu=1
+I0831 21:08:50.146340   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.adb.pubkey=QAAAAEe3lyGJPUU/TjNUggXzpvmUmbbFnS1BpuMvuJx8BZNhCjpS7tDP3i8piAva7DngBclXsWCR+rQY7y/PZRchxQSJn6rWRzUYOUXbEe+c/Sf8KioxCAD5rb78qzk1F57QRraR+ew+AJs/BB8sowe1TLjJi5z/A7lDKcTb9EPCIuStoI2l4CDx/dIwnkvN15QPCVnUPtA6C1m4n3AgcJz+twVKOM8WZzBgGRR6dp6ygPsV+2zebSh6jzaAbad5QebOutmipu1vaOb2jyYPdlf9yE7IMgYuhsYFREZ96JGaJwmXbHhMERC/K3miC+4af700QFVfM1yABBIvYgCi0t8Utl/jhGHoAzd00zmkJA9oMl64ebfbwpfv7uLf0c1E7MMdmLCWCr28qlz/6EFwFbhHFRJd9G16mfAkCg6pN+O/1oDXA762xJFsuChYuq9NobYNb3wPQaYQXSZa04765OaBtK3MaVOs8vFDsxTdBiH7/OWpgUbhehumxECvCg58LPtP1V0gL/7RPWh928dFnJOW2pfg+rSI2fL1HTJPONpu62akpii3Z3gRAkTZr4l6ECYIuDcwxT7Mgotc6pnVKdiQqSmWNW2OoOdKZ8rv24/AyGUf5ZY5aIpN4lZA3v+wNdxalmoKJNHqGNlUkzAuasW+Cq6m7clXpYJdnf3AWOBW4o1IDw93kgEAAQA= @unknown
+I0831 21:08:50.146350   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.avd_name=Medium_Phone_API_35
+I0831 21:08:50.146355   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.camera_hq_edge_processing=0
+I0831 21:08:50.146361   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.camera_protocol_ver=1
+I0831 21:08:50.146368   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.cpuvulkan.version=4202496
+I0831 21:08:50.146374   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.gltransport.drawFlushInterval=800
+I0831 21:08:50.146380   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.gltransport.name=pipe
+I0831 21:08:50.146386   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.hwcodec.avcdec=2
+I0831 21:08:50.146392   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.hwcodec.hevcdec=2
+I0831 21:08:50.146397   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.hwcodec.vpxdec=2
+I0831 21:08:50.146404   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+I0831 21:08:50.146410   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.virtiowifi=1
+I0831 21:08:50.146415   18508 userspace-boot-properties.cpp:770]   androidboot.qemu.vsync=60
+I0831 21:08:50.146421   18508 userspace-boot-properties.cpp:770]   androidboot.serialno=EMULATOR36X1X9X0
+I0831 21:08:50.146427   18508 userspace-boot-properties.cpp:770]   androidboot.vbmeta.digest=9b597927025d4f62f4594a14632a8d3763239f29c0b7af229e0b6ebcddcdea60
+I0831 21:08:50.146433   18508 userspace-boot-properties.cpp:770]   androidboot.vbmeta.hash_alg=sha256
+I0831 21:08:50.146438   18508 userspace-boot-properties.cpp:770]   androidboot.vbmeta.size=6720
+I0831 21:08:50.146448   18508 userspace-boot-properties.cpp:770]   androidboot.veritymode=enforcing
+ator\emu-crash-36.1.9.db, detection is enabled for process: 12768
+INFO         | Initializing hardware OpenGLES emulation support
+INFO         | HealthMonitor disabled.
+INFO         | SharedLibrary::open for [vulkan-1.dll]
+INFO         | SharedLibrary::open for [vulkan-1.dll]: not found in map, open for the first time
+INFO         | SharedLibrary::open for [vulkan-1.dll] (win32): call LoadLibrary
+INFO         | SharedLibrary::open succeeded for [vulkan-1.dll]. File name: [C:\Windows\SYSTEM32\vulkan-1.dll]
+INFO         | Added library: vulkan-1.dll
+INFO         | Selecting Vulkan device: NVIDIA GeForce GTX 1060 3GB, Version: 1.4.312
+INFO         | Disabling sparse binding feature support
+INFO         | SharedLibrary::open for [opengl32.dll]: not found in map, open for the first time
+INFO         | SharedLibrary::open for [opengl32.dll] (win32): call LoadLibrary
+INFO         | SharedLibrary::open succeeded for [opengl32.dll]. File name: [C:\Windows\SYSTEM32\opengl32.DLL]
+INFO         | SharedLibrary::open for [libshadertranslator.dll]: not found in map, open for the first time
+INFO         | SharedLibrary::open for [libshadertranslator.dll] (win32): call LoadLibrary
+INFO         | SharedLibrary::open succeeded for [libshadertranslator.dll]. File name: [C:\Users\Pc\AppData\Local\Android\Sdk\emulator\lib64\libshadertranslator.dll]
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: true
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         | Graphics Adapter Vendor Google (NVIDIA Corporation)
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (NVIDIA GeForce GTX 1060 3GB/PCIe/SSE2)
+INFO         | Graphics API Version OpenGL ES 3.0 (4.5.0 NVIDIA 581.08)
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_multiview_texture_multisample GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_texture_buffer 
+INFO         | Graphics Device Extensions N/A
+INFO         | Sending adb public key [QAAAAEe3lyGJPUU/TjNUggXzpvmUmbbFnS1BpuMvuJx8BZNhCjpS7tDP3i8piAva7DngBclXsWCR+rQY7y/PZRchxQSJn6rWRzUYOUXbEe+c/Sf8KioxCAD5rb78qzk1F57QRraR+ew+AJs/BB8sowe1TLjJi5z/A7lDKcTb9EPCIuStoI2l4CDx/dIwnkvN15QPCVnUPtA6C1m4n3AgcJz+twVKOM8WZzBgGRR6dp6ygPsV+2zebSh6jzaAbad5QebOutmipu1vaOb2jyYPdlf9yE7IMgYuhsYFREZ96JGaJwmXbHhMERC/K3miC+4af700QFVfM1yABBIvYgCi0t8Utl/jhGHoAzd00zmkJA9oMl64ebfbwpfv7uLf0c1E7MMdmLCWCr28qlz/6EFwFbhHFRJd9G16mfAkCg6pN+O/1oDXA762xJFsuChYuq9NobYNb3wPQaYQXSZa04765OaBtK3MaVOs8vFDsxTdBiH7/OWpgUbhehumxECvCg58LPtP1V0gL/7RPWh928dFnJOW2pfg+rSI2fL1HTJPONpu62akpii3Z3gRAkTZr4l6ECYIuDcwxT7Mgotc6pnVKdiQqSmWNW2OoOdKZ8rv24/AyGUf5ZY5aIpN4lZA3v+wNdxalmoKJNHqGNlUkzAuasW+Cq6m7clXpYJdnf3AWOBW4o1IDw93kgEAAQA= @unknown]
+AEHD is operational
+netsimd I 08-31 16:08:50.207 daemon\src\rust_main.rs:100 - netsim artifacts path: "C:\\Users\\Pc\\AppData\\Local\\Temp\\netsimd"
+netsimd I 08-31 16:08:50.208 daemon\src\rust_main.rs:103 - NetsimdArgs {
+    fd_startup_str: None,
+    no_cli_ui: true,
+    no_web_ui: true,
+    pcap: false,
+    disable_address_reuse: false,
+    hci_port: None,
+    connector_instance: None,
+    instance: None,
+    logtostderr: false,
+    dev: false,
+    forward_host_mdns: false,
+    vsock: None,
+    config: None,
+    host_dns: Some(
+        "192.168.0.1",
+    ),
+    http_proxy: None,
+    wifi_tap: None,
+    wifi: None,
+    test_beacons: false,
+    no_test_beacons: false,
+    no_shutdown: false,
+    verbose: false,
+    version: false,
+    rssi: None,
+}
+host doesn't support requested feature: CPUID.01H:ECX.xsave [bit 26]
+host doesn't support requested feature: CPUID.01H:ECX.avx [bit 28]
+host doesn't support requested feature: CPUID.80000001H:ECX.abm [bit 5]
+host doesn't support requested feature: CPUID.01H:ECX.xsave [bit 26]
+host doesn't support requested feature: CPUID.01H:ECX.avx [bit 28]
+host doesn't support requested feature: CPUID.80000001H:ECX.abm [bit 5]
+INFO         | Monitoring duration of emulator setup.
+WARNING      | The emulator now requires a signed jwt token for gRPC access! Use the -grpc flag if you really want an open unprotected grpc port
+INFO         | Using security allow list from: C:\Users\Pc\AppData\Local\Android\Sdk\emulator\lib\emulator_access.json
+WARNING      | *** Basic token auth should only be used by android-studio ***
+INFO         | The active JSON Web Key Sets can be found here: C:\Users\Pc\AppData\Local\Temp\avd\running\12768\jwks\2807eb97-699a-4c8b-8c9d-11cbc5ed9865\active.jwk
+INFO         | Scanning C:\Users\Pc\AppData\Local\Temp\avd\running\12768\jwks\2807eb97-699a-4c8b-8c9d-11cbc5ed9865 for jwk keys.
+INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token
+INFO         | Advertising in: C:\Users\Pc\AppData\Local\Temp\avd\running\pid_12768.ini
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+INFO         | setDisplayActiveConfig 0
+ERROR        | Unable to connect to adb daemon on port: 5037
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasCompatibleHypervisor
+INFO         |      Ok: Hypervisor compatibility to run avd: `Medium_Phone_API_35` are met
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `Medium_Phone_API_35` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU requirements to run avd: `Medium_Phone_API_35` are passed
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `Medium_Phone_API_35` are met
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Critical: UpdateLayeredWindowIndirect failed for ptDst=(144, 131), size=(300x21), dirty=(300x21 0, 0) (A device attached to the system is not functioning.) (:0, )
+INFO         | Boot completed in 67992 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | IPv4 server found: 192.168.0.1
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2060:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 986b:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 2072:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 1879:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 307f:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | Ignore IPv6 address: 108d:6289:ee01:0:2060:6289:ee01:0
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_rgbcSensorValueWidget_valueChanged() (:0, )
+INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_posture_valueChanged(int) (:0, )
+INFO         | AVD supportsNativeGLES=1, supportsGuestAngle=1
+INFO         | Critical: UpdateLayeredWindowIndirect failed for ptDst=(144, 131), size=(563x21), dirty=(563x21 0, 0) (A device attached to the system is not functioning.) (:0, )
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30d0:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: a8db:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 30e2:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 28e9:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 40ef:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | Ignore IPv6 address: 60fd:30a7:ee01:0:30d0:30a7:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 107f:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 888a:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 1091:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 898:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 209e:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | Ignore IPv6 address: 40ac:f8a0:ee01:0:107f:f8a0:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | IPv4 server found: 192.168.4.1
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 208e:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 9899:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 20a0:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 18a7:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 30ad:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | Ignore IPv6 address: 50bb:4566:ee01:0:208e:4566:ee01:0
+INFO         | Wait for emulator (pid 12768) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+
+INFO         | Saving with gfxstream=1
+INFO         | Saving snapshot 'default_boot' using 1838 ms
