@@ -250,6 +250,25 @@
     pointer-events: none;
   }
 
+  .battery-indicator {
+    position: fixed;
+    top: max(10px, env(safe-area-inset-top));
+    right: max(14px, env(safe-area-inset-right));
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: var(--panel);
+    border: 1px solid #232b35;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+  }
+
   .splash-screen {
     position: fixed;
     inset: 0;
@@ -338,6 +357,11 @@
 
   <div class="splash-screen" id="splashScreen">
     <img class="splash-logo" src="splash.png" alt="AlkisH Boom Boom" />
+  </div>
+
+  <div class="battery-indicator" id="batteryIndicator">
+    <span>🔋</span>
+    <span id="batteryValue">-- V</span>
   </div>
 
   <div class="brand">
@@ -654,6 +678,7 @@
   const statusText = document.getElementById('statusText');
   const wsUrlInput = document.getElementById('wsUrlInput');
   const connectBtn = document.getElementById('connectBtn');
+  const batteryValueEl = document.getElementById('batteryValue');
 
   wsUrlInput.value = localStorage.getItem('rc-ws-url') || DEFAULT_WS_URL;
 
@@ -717,6 +742,7 @@
     ws.onclose = () => {
       ws = null;
       connectBtn.textContent = 'Connect';
+      batteryValueEl.textContent = '-- V';
       if (manualDisconnect) {
         setStatus('disconnected', 'Disconnected');
       } else {
@@ -727,6 +753,18 @@
 
     ws.onerror = () => {
       if (ws) ws.close();
+    };
+
+    ws.onmessage = (event) => {
+      let data;
+      try {
+        data = JSON.parse(event.data);
+      } catch (err) {
+        return;
+      }
+      if (typeof data.battery === 'number') {
+        batteryValueEl.textContent = data.battery.toFixed(2) + ' V';
+      }
     };
   }
 
