@@ -297,6 +297,11 @@
     cursor: pointer;
   }
 
+  body.recording-active .menu-toggle,
+  body.playback-mode .menu-toggle {
+    display: none;
+  }
+
   .signal-icon {
     position: fixed;
     top: max(8px, env(safe-area-inset-top));
@@ -424,6 +429,14 @@
 
   .menu-playlist-item {
     display: flex;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .menu-playlist-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
@@ -435,6 +448,40 @@
     cursor: pointer;
     font-size: 14px;
     box-shadow: 0 0 10px rgba(59, 158, 255, 0.2);
+  }
+
+  .menu-playlist-delete {
+    flex-shrink: 0;
+    width: 44px;
+    background: #1a0d0d;
+    border: 1.5px solid #e5484d;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(229, 72, 77, 0.25);
+  }
+
+  .menu-playlist-delete:active {
+    background: #2a1414;
+  }
+
+  .menu-playlist-edit {
+    flex-shrink: 0;
+    width: 44px;
+    background: #0d1a2a;
+    border: 1.5px solid #3b9eff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(59, 158, 255, 0.25);
+  }
+
+  .menu-playlist-edit:active {
+    background: #142540;
   }
 
   .menu-playlist-title {
@@ -502,6 +549,15 @@
     box-shadow: 0 0 20px rgba(59, 158, 255, 0.4);
   }
 
+  @keyframes recordPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .record-icon-btn.pulsing {
+    animation: recordPulse 1s ease-in-out infinite;
+  }
+
   .play-timeline {
     font-size: 14px;
     font-weight: 700;
@@ -510,6 +566,21 @@
     padding: 6px 14px;
     border-radius: 8px;
     font-variant-numeric: tabular-nums;
+  }
+
+  .record-timer {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e6edf3;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-variant-numeric: tabular-nums;
+    display: none;
+  }
+
+  .record-timer.visible {
+    display: block;
   }
 
   body.playback-mode .controls {
@@ -586,6 +657,12 @@
 
   .modal-btn.primary {
     background: linear-gradient(135deg, var(--knob-top), var(--knob-bottom));
+    border: none;
+    color: #fff;
+  }
+
+  .modal-btn.danger {
+    background: linear-gradient(135deg, #ff6a53, #8a1c14);
     border: none;
     color: #fff;
   }
@@ -929,12 +1006,12 @@
           <path d="M15 4l-8 8 8 8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
-      <span class="menu-title">Menu</span>
+      <span class="menu-title" id="menuTitleText">Menu</span>
       <span class="menu-header-spacer"></span>
     </div>
     <div class="menu-buttons" id="menuButtons">
       <button class="menu-btn" id="menuRecord">Record</button>
-      <button class="menu-btn" id="menuPlay">Play</button>
+      <button class="menu-btn" id="menuPlay">Play List</button>
       <button class="menu-btn" id="menuAbout">About</button>
     </div>
     <div class="menu-playlist" id="menuPlaylist"></div>
@@ -943,6 +1020,7 @@
   <div class="record-overlay" id="recordOverlay">
     <div class="record-hint" id="recordHint">Move car to start recording</div>
     <button class="record-icon-btn" id="recordIconBtn" aria-label="Recording control"></button>
+    <div class="record-timer" id="recordTimer">0.0s</div>
   </div>
 
   <div class="play-overlay" id="playOverlay">
@@ -970,10 +1048,22 @@
         <p>Designed and developed by Kashif Hussain to bring modern technology to children's ride-on cars through custom hardware, firmware, and remote control integration.</p>
         <h4>Technical Overview</h4>
         <p><strong>Developer:</strong> Kashif Hussain</p>
+        <p><strong>Powered by:</strong> Muztech Solutions</p>
         <p><strong>Scope:</strong> Hardware, Firmware, &amp; Remote Control Architecture</p>
-        <p><strong>Purpose:</strong> Upgrading traditional ride-on toy cars with modern smart tech for enhanced performance and user experience.</p>
+        <p><strong>Purpose:</strong> Upgrading traditional ride-on toy cars with modern smart tech for enhanced performance and user experience.</p>        
       </div>
       <button class="modal-btn primary" id="aboutCloseBtn">Close</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="deleteConfirmOverlay">
+    <div class="modal-box">
+      <div class="modal-title">Delete recording?</div>
+      <div class="about-content" id="deleteConfirmText">This will permanently delete this recording.</div>
+      <div class="modal-actions">
+        <button class="modal-btn" id="deleteCancelBtn">Cancel</button>
+        <button class="modal-btn danger" id="deleteConfirmBtn">Delete</button>
+      </div>
     </div>
   </div>
 
@@ -1643,17 +1733,59 @@
   const menuClose = document.getElementById('menuClose');
   const menuButtons = document.getElementById('menuButtons');
   const menuPlaylist = document.getElementById('menuPlaylist');
+  const menuTitleText = document.getElementById('menuTitleText');
+
+  const ICON_TRASH = '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M6 7h12M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2m-9 0 1 13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-13" stroke="#ff8b8b" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   let menuView = 'main';
 
   function showMainMenuView() {
     menuView = 'main';
+    menuTitleText.textContent = 'Menu';
     menuButtons.style.display = '';
     menuPlaylist.classList.remove('open');
   }
 
+  function deleteRecording(index) {
+    const list = loadRecordings();
+    list.splice(index, 1);
+    saveRecordings(list);
+    showPlaylistView();
+  }
+
+  const deleteConfirmOverlay = document.getElementById('deleteConfirmOverlay');
+  const deleteConfirmText = document.getElementById('deleteConfirmText');
+  const deleteCancelBtn = document.getElementById('deleteCancelBtn');
+  const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
+  let pendingDeleteIndex = null;
+
+  function openDeleteConfirm(index, title) {
+    pendingDeleteIndex = index;
+    deleteConfirmText.textContent = 'This will permanently delete "' + title + '".';
+    deleteConfirmOverlay.classList.add('open');
+  }
+
+  function closeDeleteConfirm() {
+    pendingDeleteIndex = null;
+    deleteConfirmOverlay.classList.remove('open');
+  }
+
+  deleteCancelBtn.addEventListener('click', closeDeleteConfirm);
+
+  deleteConfirmOverlay.addEventListener('click', (e) => {
+    if (e.target === deleteConfirmOverlay) closeDeleteConfirm();
+  });
+
+  deleteConfirmBtn.addEventListener('click', () => {
+    if (pendingDeleteIndex !== null) {
+      deleteRecording(pendingDeleteIndex);
+    }
+    closeDeleteConfirm();
+  });
+
   function showPlaylistView() {
     menuView = 'playlist';
+    menuTitleText.textContent = 'Play List';
     const recordings = loadRecordings();
     menuPlaylist.innerHTML = '';
     if (recordings.length === 0) {
@@ -1662,9 +1794,12 @@
       empty.textContent = 'No recordings yet';
       menuPlaylist.appendChild(empty);
     } else {
-      recordings.forEach((rec) => {
-        const item = document.createElement('button');
+      recordings.forEach((rec, index) => {
+        const item = document.createElement('div');
         item.className = 'menu-playlist-item';
+
+        const mainBtn = document.createElement('button');
+        mainBtn.className = 'menu-playlist-main';
 
         const title = document.createElement('span');
         title.className = 'menu-playlist-title';
@@ -1674,12 +1809,36 @@
         duration.className = 'menu-playlist-duration';
         duration.textContent = rec.duration.toFixed(1) + 's';
 
-        item.appendChild(title);
-        item.appendChild(duration);
-        item.addEventListener('click', () => {
+        mainBtn.appendChild(title);
+        mainBtn.appendChild(duration);
+        mainBtn.addEventListener('click', () => {
           closeMenu();
           startPlayback(rec);
         });
+
+        const editBtn = document.createElement('button');
+        editBtn.className = 'menu-playlist-edit';
+        editBtn.setAttribute('aria-label', 'Re-record this item');
+        editBtn.innerHTML = ICON_EDIT_PENCIL;
+        editBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          closeMenu();
+          editingIndex = index;
+          enterRecordWaiting(rec.title);
+        });
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'menu-playlist-delete';
+        deleteBtn.setAttribute('aria-label', 'Delete recording');
+        deleteBtn.innerHTML = ICON_TRASH;
+        deleteBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openDeleteConfirm(index, rec.title);
+        });
+
+        item.appendChild(mainBtn);
+        item.appendChild(editBtn);
+        item.appendChild(deleteBtn);
         menuPlaylist.appendChild(item);
       });
     }
@@ -1699,6 +1858,12 @@
   }
 
   menuToggle.addEventListener('click', () => {
+    if (appMode === 'recording' || appMode === 'playing') return;
+    if (appMode === 'record-waiting') {
+      cancelRecordWaiting();
+    } else if (appMode === 'record-ready') {
+      exitRecordReady();
+    }
     if (menuPanel.classList.contains('open')) {
       closeMenu();
     } else {
@@ -1730,13 +1895,13 @@
   });
 
   document.getElementById('menuAbout').addEventListener('click', () => {
-    closeMenu();
     aboutModalOverlay.classList.add('open');
   });
 
   document.getElementById('menuRecord').addEventListener('click', () => {
     if (appMode !== 'normal') return;
     closeMenu();
+    editingIndex = null;
     openTitleModal();
   });
 
@@ -1764,6 +1929,8 @@
   let pendingTitle = '';
   let recordingFrames = [];
   let recordingStartTime = 0;
+  let editingIndex = null;
+  let pendingPlaybackRecording = null;
 
   let playbackRecording = null;
   let playbackRAF = null;
@@ -1774,6 +1941,7 @@
   const recordOverlay = document.getElementById('recordOverlay');
   const recordHint = document.getElementById('recordHint');
   const recordIconBtn = document.getElementById('recordIconBtn');
+  const recordTimer = document.getElementById('recordTimer');
   const playOverlay = document.getElementById('playOverlay');
   const playTimeline = document.getElementById('playTimeline');
   const playStopBtn = document.getElementById('playStopBtn');
@@ -1784,7 +1952,15 @@
   const titleCancelBtn = document.getElementById('titleCancelBtn');
 
   const ICON_RECORD_DOT = '<svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="12" r="9" fill="#ff4d4d"/></svg>';
-  const ICON_STOP_SQUARE = '<svg viewBox="0 0 24 24" width="26" height="26"><rect x="6" y="6" width="12" height="12" rx="2" fill="#fff"/></svg>';
+  const ICON_PLAY_TRIANGLE = '<svg viewBox="0 0 24 24" width="26" height="26"><path d="M8 5v14l11-7z" fill="#fff"/></svg>';
+  const ICON_EDIT_PENCIL = '<svg viewBox="0 0 24 24" width="16" height="16"><path d="M4 20l1-4L16 5l3 3L8 19l-4 1z" stroke="#9ec5ff" stroke-width="1.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>';
+
+  let recordTimerInterval = null;
+
+  function updateRecordTimerDisplay() {
+    const elapsed = (performance.now() - recordingStartTime) / 1000;
+    recordTimer.textContent = elapsed.toFixed(1) + 's';
+  }
 
   function openTitleModal() {
     titleInput.value = '';
@@ -1804,13 +1980,29 @@
     enterRecordWaiting(title);
   });
 
+  function cancelRecordWaiting() {
+    appMode = 'normal';
+    editingIndex = null;
+    pendingTitle = '';
+    recordingFrames = [];
+    document.body.classList.remove('record-mode');
+    document.body.classList.remove('recording-active');
+    recordOverlay.classList.remove('visible');
+  }
+
   function enterRecordWaiting(title) {
     appMode = 'record-waiting';
     pendingTitle = title;
     recordingFrames = [];
+    recordHint.textContent = 'Move car to start recording';
     recordHint.style.display = '';
     recordIconBtn.innerHTML = ICON_RECORD_DOT;
+    recordIconBtn.classList.remove('pulsing');
+    clearInterval(recordTimerInterval);
+    recordTimerInterval = null;
+    recordTimer.classList.remove('visible');
     document.body.classList.add('record-mode');
+    document.body.classList.remove('recording-active');
     recordOverlay.classList.add('visible');
   }
 
@@ -1818,7 +2010,12 @@
     appMode = 'recording';
     recordingStartTime = performance.now();
     recordHint.style.display = 'none';
-    recordIconBtn.innerHTML = ICON_STOP_SQUARE;
+    recordIconBtn.classList.add('pulsing');
+    recordTimer.classList.add('visible');
+    updateRecordTimerDisplay();
+    clearInterval(recordTimerInterval);
+    recordTimerInterval = setInterval(updateRecordTimerDisplay, 100);
+    document.body.classList.add('recording-active');
     captureFrame();
   }
 
@@ -1840,16 +2037,23 @@
     }
   }
 
-  function stopRecordingAndPlay() {
+  function stopRecordingAndSave() {
     const duration = Math.max((performance.now() - recordingStartTime) / 1000, 0.1);
     const recording = { title: pendingTitle, duration: duration, frames: recordingFrames };
     const list = loadRecordings();
-    list.push(recording);
+    if (editingIndex !== null) {
+      list[editingIndex] = recording;
+    } else {
+      list.push(recording);
+    }
     saveRecordings(list);
+    editingIndex = null;
 
-    document.body.classList.remove('record-mode');
-    recordOverlay.classList.remove('visible');
-    appMode = 'normal';
+    recordIconBtn.classList.remove('pulsing');
+    clearInterval(recordTimerInterval);
+    recordTimerInterval = null;
+    recordTimer.classList.remove('visible');
+    document.body.classList.remove('recording-active');
 
     lastX = 0;
     lastY = 0;
@@ -1858,12 +2062,33 @@
     sendNow();
     resetSpeedNeedle();
 
-    startPlayback(recording);
+    showReadyToPlay(recording);
+  }
+
+  function showReadyToPlay(recording) {
+    appMode = 'record-ready';
+    pendingPlaybackRecording = recording;
+    recordHint.style.display = 'none';
+    recordIconBtn.innerHTML = ICON_PLAY_TRIANGLE;
+  }
+
+  function exitRecordReady() {
+    appMode = 'normal';
+    pendingPlaybackRecording = null;
+    document.body.classList.remove('record-mode');
+    recordOverlay.classList.remove('visible');
   }
 
   recordIconBtn.addEventListener('click', () => {
     if (appMode === 'recording') {
-      stopRecordingAndPlay();
+      stopRecordingAndSave();
+    } else if (appMode === 'record-ready') {
+      const recording = pendingPlaybackRecording;
+      pendingPlaybackRecording = null;
+      document.body.classList.remove('record-mode');
+      recordOverlay.classList.remove('visible');
+      appMode = 'normal';
+      startPlayback(recording);
     }
   });
 
