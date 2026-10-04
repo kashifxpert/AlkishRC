@@ -331,7 +331,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(75vw, 280px);
+    width: 100%;
     background: linear-gradient(160deg, #2a2d33 0%, #0a0a0b 55%, #000000 100%);
     box-shadow: -8px 0 28px rgba(0, 0, 0, 0.55);
     z-index: 295;
@@ -350,25 +350,42 @@
   .menu-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     margin-bottom: 8px;
   }
 
+  .menu-back {
+    background: none;
+    border: none;
+    padding: 4px;
+    width: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .menu-header-spacer {
+    width: 32px;
+    flex-shrink: 0;
+  }
+
+  .menu-buttons {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
   .menu-title {
+    flex: 1;
+    text-align: center;
     font-size: 20px;
     font-weight: 800;
     color: #e6edf3;
     letter-spacing: 0.04em;
-  }
-
-  .menu-close {
-    background: none;
-    border: none;
-    color: #e6edf3;
-    font-size: 26px;
-    line-height: 1;
-    padding: 0 4px;
-    cursor: pointer;
   }
 
   .menu-btn {
@@ -382,6 +399,9 @@
     cursor: pointer;
     box-shadow: 0 0 10px rgba(59, 158, 255, 0.25);
     transition: background 0.15s ease, box-shadow 0.15s ease;
+    width: 50%;
+    min-width: 50%;
+    align-self: center;
   }
 
   .menu-btn:active {
@@ -685,12 +705,19 @@
 
   <div class="menu-panel" id="menuPanel">
     <div class="menu-header">
+      <button class="menu-back" id="menuClose" aria-label="Back">
+        <svg viewBox="0 0 24 24" width="20" height="20">
+          <path d="M15 4l-8 8 8 8" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
       <span class="menu-title">Menu</span>
-      <button class="menu-close" id="menuClose" aria-label="Close">&times;</button>
+      <span class="menu-header-spacer"></span>
     </div>
-    <button class="menu-btn" id="menuAbout">About</button>
-    <button class="menu-btn" id="menuRecord">Record</button>
-    <button class="menu-btn" id="menuPlay">Play</button>
+    <div class="menu-buttons">
+      <button class="menu-btn" id="menuAbout">About</button>
+      <button class="menu-btn" id="menuRecord">Record</button>
+      <button class="menu-btn" id="menuPlay">Play</button>
+    </div>
   </div>
 
 <script>
