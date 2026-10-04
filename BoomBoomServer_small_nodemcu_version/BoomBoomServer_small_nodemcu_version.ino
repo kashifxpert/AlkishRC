@@ -28,10 +28,15 @@ const int MAX_DUTY = 1023;   // ESP8266 PWM range
 // R1/R2 junction) scales the battery voltage down into that 0-3.3V range.
 const float ADC_MAX_VALUE = 1023.0;
 const float ADC_REF_VOLTAGE = 3.3;
-const float VDIV_R1 = 99500.0;   // ohms (measured)
+const float VDIV_R1 = 99900.0;   // ohms (measured)
 const float VDIV_R2 = 21400.0;   // ohms (measured)
 const float VDIV_RATIO = (VDIV_R1 + VDIV_R2) / VDIV_R2;
 const int BATTERY_SAMPLES = 8;
+
+// Fine-tune multiplier to correct for the ESP8266's imprecise 3.3V reference
+// and any residual error. Re-derive as: (multimeter reading) / (remote reading)
+// using the current value below, then replace it with the new result.
+const float CALIBRATION_FACTOR = 1.0228;
 
 const unsigned long BATTERY_REPORT_INTERVAL_MS = 2000;
 unsigned long lastBatteryReportAt = 0;
@@ -100,7 +105,7 @@ float readBatteryVoltage()
     float raw = total / (float)BATTERY_SAMPLES;
 
     float adcVoltage = (raw / ADC_MAX_VALUE) * ADC_REF_VOLTAGE;
-    return adcVoltage * VDIV_RATIO;
+    return adcVoltage * VDIV_RATIO * CALIBRATION_FACTOR;
 }
 
 void broadcastBatteryVoltage()
