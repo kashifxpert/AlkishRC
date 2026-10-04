@@ -409,6 +409,218 @@
     box-shadow: 0 0 16px rgba(59, 158, 255, 0.5);
   }
 
+  .menu-playlist {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    padding-top: 4px;
+  }
+
+  .menu-playlist.open {
+    display: flex;
+  }
+
+  .menu-playlist-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #000;
+    border: 1.5px solid #3b9eff;
+    color: #e6edf3;
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    box-shadow: 0 0 10px rgba(59, 158, 255, 0.2);
+  }
+
+  .menu-playlist-title {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .menu-playlist-duration {
+    color: var(--text-dim);
+    font-size: 12px;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .menu-playlist-empty {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  .record-overlay,
+  .play-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    pointer-events: none;
+  }
+
+  .record-overlay.visible,
+  .play-overlay.visible {
+    display: flex;
+  }
+
+  .record-hint {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e6edf3;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px 16px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .record-icon-btn,
+  .play-stop-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--panel);
+    border: 2px solid #3b9eff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 0 20px rgba(59, 158, 255, 0.4);
+  }
+
+  .play-timeline {
+    font-size: 14px;
+    font-weight: 700;
+    color: #e6edf3;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  body.playback-mode .controls {
+    pointer-events: none;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-box {
+    background: linear-gradient(160deg, #2a2d33 0%, #0a0a0b 60%, #000000 100%);
+    border: 1.5px solid #3b9eff;
+    border-radius: 14px;
+    padding: 20px;
+    width: min(80vw, 300px);
+    box-shadow: 0 0 30px rgba(59, 158, 255, 0.3);
+  }
+
+  .modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e6edf3;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .modal-input {
+    width: 100%;
+    background: #000;
+    border: 1.5px solid #2a3340;
+    color: #e6edf3;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+
+  .modal-input:focus {
+    outline: none;
+    border-color: #3b9eff;
+  }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+  }
+
+  .modal-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1.5px solid #3b9eff;
+    background: #000;
+    color: #e6edf3;
+  }
+
+  .modal-btn.primary {
+    background: linear-gradient(135deg, var(--knob-top), var(--knob-bottom));
+    border: none;
+    color: #fff;
+  }
+
+  .about-modal-box {
+    width: min(85vw, 340px);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-content {
+    color: #c7ced6;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+    overflow-y: auto;
+  }
+
+  .about-content p {
+    margin: 0 0 10px;
+  }
+
+  .about-content h4 {
+    color: #e6edf3;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 14px 0 8px;
+    letter-spacing: 0.03em;
+  }
+
+  .about-content strong {
+    color: #3b9eff;
+  }
+
   .fuel-gauge {
     position: fixed;
     top: 50%;
@@ -720,10 +932,48 @@
       <span class="menu-title">Menu</span>
       <span class="menu-header-spacer"></span>
     </div>
-    <div class="menu-buttons">
+    <div class="menu-buttons" id="menuButtons">
       <button class="menu-btn" id="menuRecord">Record</button>
       <button class="menu-btn" id="menuPlay">Play</button>
       <button class="menu-btn" id="menuAbout">About</button>
+    </div>
+    <div class="menu-playlist" id="menuPlaylist"></div>
+  </div>
+
+  <div class="record-overlay" id="recordOverlay">
+    <div class="record-hint" id="recordHint">Move car to start recording</div>
+    <button class="record-icon-btn" id="recordIconBtn" aria-label="Recording control"></button>
+  </div>
+
+  <div class="play-overlay" id="playOverlay">
+    <button class="play-stop-btn" id="playStopBtn" aria-label="Stop playback">
+      <svg viewBox="0 0 24 24" width="22" height="22"><rect x="5" y="5" width="14" height="14" rx="2" fill="#fff" /></svg>
+    </button>
+    <div class="play-timeline" id="playTimeline">0.0s / 0.0s</div>
+  </div>
+
+  <div class="modal-overlay" id="titleModalOverlay">
+    <div class="modal-box">
+      <div class="modal-title">Name this recording</div>
+      <input type="text" class="modal-input" id="titleInput" placeholder="e.g. Driveway loop" maxlength="40" />
+      <div class="modal-actions">
+        <button class="modal-btn" id="titleCancelBtn">Cancel</button>
+        <button class="modal-btn primary" id="titleSaveBtn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="aboutModalOverlay">
+    <div class="modal-box about-modal-box">
+      <div class="modal-title">About</div>
+      <div class="about-content">
+        <p>Designed and developed by Kashif Hussain to bring modern technology to children's ride-on cars through custom hardware, firmware, and remote control integration.</p>
+        <h4>Technical Overview</h4>
+        <p><strong>Developer:</strong> Kashif Hussain</p>
+        <p><strong>Scope:</strong> Hardware, Firmware, &amp; Remote Control Architecture</p>
+        <p><strong>Purpose:</strong> Upgrading traditional ride-on toy cars with modern smart tech for enhanced performance and user experience.</p>
+      </div>
+      <button class="modal-btn primary" id="aboutCloseBtn">Close</button>
     </div>
   </div>
 
@@ -1358,13 +1608,19 @@
       } else {
         resetSpeedNeedle();
       }
+      handleControlChangeForRecording();
     }
   });
 
   const joyX = createFloatingJoystick({
     zoneEl: document.getElementById('zoneX'),
     axis: 'x',
-    onChange: (v) => { xValEl.textContent = v; lastX = v; scheduleSend(); }
+    onChange: (v) => {
+      xValEl.textContent = v;
+      lastX = v;
+      scheduleSend();
+      handleControlChangeForRecording();
+    }
   });
 
   window.addEventListener('resize', () => {
@@ -1385,8 +1641,54 @@
   const menuOverlay = document.getElementById('menuOverlay');
   const menuPanel = document.getElementById('menuPanel');
   const menuClose = document.getElementById('menuClose');
+  const menuButtons = document.getElementById('menuButtons');
+  const menuPlaylist = document.getElementById('menuPlaylist');
+
+  let menuView = 'main';
+
+  function showMainMenuView() {
+    menuView = 'main';
+    menuButtons.style.display = '';
+    menuPlaylist.classList.remove('open');
+  }
+
+  function showPlaylistView() {
+    menuView = 'playlist';
+    const recordings = loadRecordings();
+    menuPlaylist.innerHTML = '';
+    if (recordings.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'menu-playlist-empty';
+      empty.textContent = 'No recordings yet';
+      menuPlaylist.appendChild(empty);
+    } else {
+      recordings.forEach((rec) => {
+        const item = document.createElement('button');
+        item.className = 'menu-playlist-item';
+
+        const title = document.createElement('span');
+        title.className = 'menu-playlist-title';
+        title.textContent = rec.title;
+
+        const duration = document.createElement('span');
+        duration.className = 'menu-playlist-duration';
+        duration.textContent = rec.duration.toFixed(1) + 's';
+
+        item.appendChild(title);
+        item.appendChild(duration);
+        item.addEventListener('click', () => {
+          closeMenu();
+          startPlayback(rec);
+        });
+        menuPlaylist.appendChild(item);
+      });
+    }
+    menuButtons.style.display = 'none';
+    menuPlaylist.classList.add('open');
+  }
 
   function openMenu() {
+    showMainMenuView();
     menuOverlay.classList.add('open');
     menuPanel.classList.add('open');
   }
@@ -1405,11 +1707,240 @@
   });
 
   menuOverlay.addEventListener('click', closeMenu);
-  menuClose.addEventListener('click', closeMenu);
 
-  document.getElementById('menuAbout').addEventListener('click', closeMenu);
-  document.getElementById('menuRecord').addEventListener('click', closeMenu);
-  document.getElementById('menuPlay').addEventListener('click', closeMenu);
+  menuClose.addEventListener('click', () => {
+    if (menuView === 'playlist') {
+      showMainMenuView();
+    } else {
+      closeMenu();
+    }
+  });
+
+  const aboutModalOverlay = document.getElementById('aboutModalOverlay');
+  const aboutCloseBtn = document.getElementById('aboutCloseBtn');
+
+  aboutCloseBtn.addEventListener('click', () => {
+    aboutModalOverlay.classList.remove('open');
+  });
+
+  aboutModalOverlay.addEventListener('click', (e) => {
+    if (e.target === aboutModalOverlay) {
+      aboutModalOverlay.classList.remove('open');
+    }
+  });
+
+  document.getElementById('menuAbout').addEventListener('click', () => {
+    closeMenu();
+    aboutModalOverlay.classList.add('open');
+  });
+
+  document.getElementById('menuRecord').addEventListener('click', () => {
+    if (appMode !== 'normal') return;
+    closeMenu();
+    openTitleModal();
+  });
+
+  document.getElementById('menuPlay').addEventListener('click', () => {
+    if (appMode !== 'normal') return;
+    showPlaylistView();
+  });
+
+  // ---- Record & Play ----
+  const RECORDINGS_KEY = 'rc-recordings';
+
+  function loadRecordings() {
+    try {
+      return JSON.parse(localStorage.getItem(RECORDINGS_KEY) || '[]');
+    } catch (err) {
+      return [];
+    }
+  }
+
+  function saveRecordings(list) {
+    localStorage.setItem(RECORDINGS_KEY, JSON.stringify(list));
+  }
+
+  let appMode = 'normal'; // 'normal' | 'record-waiting' | 'recording' | 'playing'
+  let pendingTitle = '';
+  let recordingFrames = [];
+  let recordingStartTime = 0;
+
+  let playbackRecording = null;
+  let playbackRAF = null;
+  let playbackStartTime = 0;
+  let lastPlaybackSentX = null;
+  let lastPlaybackSentY = null;
+
+  const recordOverlay = document.getElementById('recordOverlay');
+  const recordHint = document.getElementById('recordHint');
+  const recordIconBtn = document.getElementById('recordIconBtn');
+  const playOverlay = document.getElementById('playOverlay');
+  const playTimeline = document.getElementById('playTimeline');
+  const playStopBtn = document.getElementById('playStopBtn');
+
+  const titleModalOverlay = document.getElementById('titleModalOverlay');
+  const titleInput = document.getElementById('titleInput');
+  const titleSaveBtn = document.getElementById('titleSaveBtn');
+  const titleCancelBtn = document.getElementById('titleCancelBtn');
+
+  const ICON_RECORD_DOT = '<svg viewBox="0 0 24 24" width="26" height="26"><circle cx="12" cy="12" r="9" fill="#ff4d4d"/></svg>';
+  const ICON_STOP_SQUARE = '<svg viewBox="0 0 24 24" width="26" height="26"><rect x="6" y="6" width="12" height="12" rx="2" fill="#fff"/></svg>';
+
+  function openTitleModal() {
+    titleInput.value = '';
+    titleModalOverlay.classList.add('open');
+    titleInput.focus();
+  }
+
+  function closeTitleModal() {
+    titleModalOverlay.classList.remove('open');
+  }
+
+  titleCancelBtn.addEventListener('click', closeTitleModal);
+
+  titleSaveBtn.addEventListener('click', () => {
+    const title = titleInput.value.trim() || 'Untitled recording';
+    closeTitleModal();
+    enterRecordWaiting(title);
+  });
+
+  function enterRecordWaiting(title) {
+    appMode = 'record-waiting';
+    pendingTitle = title;
+    recordingFrames = [];
+    recordHint.style.display = '';
+    recordIconBtn.innerHTML = ICON_RECORD_DOT;
+    document.body.classList.add('record-mode');
+    recordOverlay.classList.add('visible');
+  }
+
+  function beginActualRecording() {
+    appMode = 'recording';
+    recordingStartTime = performance.now();
+    recordHint.style.display = 'none';
+    recordIconBtn.innerHTML = ICON_STOP_SQUARE;
+    captureFrame();
+  }
+
+  function captureFrame() {
+    recordingFrames.push({
+      t: Math.round(performance.now() - recordingStartTime) / 1000,
+      x: lastX,
+      y: lastY
+    });
+  }
+
+  function handleControlChangeForRecording() {
+    if (appMode === 'record-waiting') {
+      if (lastX !== 0 || lastY !== 0) {
+        beginActualRecording();
+      }
+    } else if (appMode === 'recording') {
+      captureFrame();
+    }
+  }
+
+  function stopRecordingAndPlay() {
+    const duration = Math.max((performance.now() - recordingStartTime) / 1000, 0.1);
+    const recording = { title: pendingTitle, duration: duration, frames: recordingFrames };
+    const list = loadRecordings();
+    list.push(recording);
+    saveRecordings(list);
+
+    document.body.classList.remove('record-mode');
+    recordOverlay.classList.remove('visible');
+    appMode = 'normal';
+
+    lastX = 0;
+    lastY = 0;
+    xValEl.textContent = '0';
+    yValEl.textContent = '0';
+    sendNow();
+    resetSpeedNeedle();
+
+    startPlayback(recording);
+  }
+
+  recordIconBtn.addEventListener('click', () => {
+    if (appMode === 'recording') {
+      stopRecordingAndPlay();
+    }
+  });
+
+  function frameAtTime(frames, t) {
+    let result = { x: 0, y: 0 };
+    for (let i = 0; i < frames.length; i++) {
+      if (frames[i].t <= t) {
+        result = frames[i];
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  function startPlayback(recording) {
+    playbackRecording = recording;
+    appMode = 'playing';
+    document.body.classList.add('playback-mode');
+    playOverlay.classList.add('visible');
+    playbackStartTime = performance.now();
+    lastPlaybackSentX = null;
+    lastPlaybackSentY = null;
+    cancelAnimationFrame(playbackRAF);
+    playbackTick();
+  }
+
+  function playbackTick() {
+    const rec = playbackRecording;
+    const duration = Math.max(rec.duration, 0.1);
+    const elapsed = (performance.now() - playbackStartTime) / 1000;
+    const cycle = duration * 2;
+    const cyclePos = elapsed % cycle;
+    const isReverse = cyclePos > duration;
+    const t = isReverse ? cycle - cyclePos : cyclePos;
+
+    const frame = frameAtTime(rec.frames, t);
+    // On the reverse pass, invert steering/throttle so the car retraces its
+    // path instead of re-sending the same forward/left commands backwards.
+    const sendX = isReverse ? -frame.x : frame.x;
+    const sendY = isReverse ? -frame.y : frame.y;
+
+    if (sendX !== lastPlaybackSentX || sendY !== lastPlaybackSentY) {
+      lastPlaybackSentX = sendX;
+      lastPlaybackSentY = sendY;
+      if (ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ x: sendX, y: sendY }));
+      }
+      updateSpeedNeedle(sendY);
+      xValEl.textContent = sendX;
+      yValEl.textContent = sendY;
+    }
+
+    playTimeline.textContent = t.toFixed(1) + 's / ' + duration.toFixed(1) + 's';
+
+    playbackRAF = requestAnimationFrame(playbackTick);
+  }
+
+  function stopPlayback() {
+    cancelAnimationFrame(playbackRAF);
+    playbackRAF = null;
+    playbackRecording = null;
+    document.body.classList.remove('playback-mode');
+    playOverlay.classList.remove('visible');
+    appMode = 'normal';
+
+    lastX = 0;
+    lastY = 0;
+    xValEl.textContent = '0';
+    yValEl.textContent = '0';
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ x: 0, y: 0 }));
+    }
+    resetSpeedNeedle();
+  }
+
+  playStopBtn.addEventListener('click', stopPlayback);
 })();
 </script>
 </body>
