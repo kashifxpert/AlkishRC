@@ -848,10 +848,11 @@
           <stop offset="45%" stop-color="#1c1e22" />
           <stop offset="100%" stop-color="#45494f" />
         </linearGradient>
-        <radialGradient id="gaugeHubGrad" cx="35%" cy="28%" r="75%">
-          <stop offset="0%" stop-color="#4a4d52" />
-          <stop offset="55%" stop-color="#1c1d1f" />
-          <stop offset="100%" stop-color="#050505" />
+        <radialGradient id="gaugeHubGrad" cx="35%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#3a3d42" />
+          <stop offset="40%" stop-color="#232528" />
+          <stop offset="75%" stop-color="#121315" />
+          <stop offset="100%" stop-color="#000000" />
         </radialGradient>
         <linearGradient id="gaugeNeedleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#8a1c14" />
@@ -863,6 +864,8 @@
       <circle cx="100" cy="100" r="93" fill="url(#gaugeBezelGrad)" />
       <circle cx="100" cy="100" r="83" fill="url(#gaugeFaceGrad)" stroke="#000" stroke-width="1" />
       <ellipse cx="78" cy="55" rx="48" ry="32" fill="url(#gaugeShineGrad)" transform="rotate(-20 78 55)" />
+
+      <path id="gaugeRedZone" fill="none" stroke="#8b2020" stroke-width="5" stroke-linecap="butt" opacity="0.85" />
 
       <g id="gaugeTicks"></g>
 
@@ -878,11 +881,13 @@
       <text id="gaugeReadout" x="100" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#e6edf3" font-family="-apple-system, sans-serif">-- V</text>
 
       <g id="gaugeNeedle">
-        <polygon points="93,100 107,100 100,22" fill="url(#gaugeNeedleGrad)" stroke="#5c1009" stroke-width="0.5" />
+        <polygon points="97,94 103,94 101,34 99,34" fill="url(#gaugeNeedleGrad)" stroke-linejoin="round" />
+        <polygon points="99,34 101,34 100.4,21 99.6,21" fill="url(#gaugeNeedleGrad)" stroke-linejoin="round" />
+        <rect x="97" y="104" width="6" height="16" rx="3" fill="url(#gaugeNeedleGrad)" />
       </g>
 
-      <circle cx="100" cy="100" r="22" fill="url(#gaugeHubGrad)" stroke="#000" stroke-width="1" />
-      <circle cx="93" cy="91" r="6" fill="rgba(255,255,255,0.18)" />
+      <circle cx="100" cy="100" r="10.5" fill="url(#gaugeHubGrad)" stroke="#000" stroke-width="0.6" />
+      <ellipse cx="97" cy="96" rx="4" ry="2.5" fill="rgba(255,255,255,0.12)" transform="rotate(-20 97 96)" />
     </svg>
   </div>
 
@@ -903,10 +908,11 @@
           <stop offset="45%" stop-color="#1c1e22" />
           <stop offset="100%" stop-color="#45494f" />
         </linearGradient>
-        <radialGradient id="speedHubGrad" cx="35%" cy="28%" r="75%">
-          <stop offset="0%" stop-color="#4a4d52" />
-          <stop offset="55%" stop-color="#1c1d1f" />
-          <stop offset="100%" stop-color="#050505" />
+        <radialGradient id="speedHubGrad" cx="35%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="#3a3d42" />
+          <stop offset="40%" stop-color="#232528" />
+          <stop offset="75%" stop-color="#121315" />
+          <stop offset="100%" stop-color="#000000" />
         </radialGradient>
         <linearGradient id="speedNeedleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#8a1c14" />
@@ -925,11 +931,13 @@
       <text x="100" y="140" text-anchor="middle" font-size="11" font-weight="700" fill="#d7dbe0" font-family="-apple-system, sans-serif">km/h</text>
 
       <g id="speedNeedle">
-        <polygon points="96,100 104,100 100,20" fill="url(#speedNeedleGrad)" stroke="#5c1009" stroke-width="0.5" />
+        <polygon points="97,94 103,94 101,34 99,34" fill="url(#speedNeedleGrad)" stroke-linejoin="round" />
+        <polygon points="99,34 101,34 100.4,21 99.6,21" fill="url(#speedNeedleGrad)" stroke-linejoin="round" />
+        <rect x="97" y="104" width="6" height="16" rx="3" fill="url(#speedNeedleGrad)" />
       </g>
 
-      <circle cx="100" cy="100" r="22" fill="url(#speedHubGrad)" stroke="#000" stroke-width="1" />
-      <circle cx="93" cy="91" r="6" fill="rgba(255,255,255,0.18)" />
+      <circle cx="100" cy="100" r="10.5" fill="url(#speedHubGrad)" stroke="#000" stroke-width="0.6" />
+      <ellipse cx="97" cy="96" rx="4" ry="2.5" fill="rgba(255,255,255,0.12)" transform="rotate(-20 97 96)" />
     </svg>
   </div>
 
@@ -1366,6 +1374,15 @@
     if (!ticksGroup) return;
     const NS = 'http://www.w3.org/2000/svg';
 
+    // Red low-voltage zone: from E (i=0) to the first major mark (i=2).
+    const redZone = document.getElementById('gaugeRedZone');
+    if (redZone) {
+      const rzRadius = 80;
+      const p1 = gaugePoint(rzRadius, GAUGE_MIN_ANGLE);
+      const p2 = gaugePoint(rzRadius, GAUGE_MIN_ANGLE + 60);
+      redZone.setAttribute('d', `M ${p1.x.toFixed(2)} ${p1.y.toFixed(2)} A ${rzRadius} ${rzRadius} 0 0 1 ${p2.x.toFixed(2)} ${p2.y.toFixed(2)}`);
+    }
+
     // 9 marks evenly spaced across the sweep: 5 major (E, 1/4, 1/2, 3/4, F)
     // and 4 minor marks between them, same pattern as a classic fuel gauge.
     for (let i = 0; i <= 8; i++) {
@@ -1404,13 +1421,34 @@
     if (needle) needle.style.transform = `rotate(${angle}deg)`;
   }
 
+  // Needle moves at its normal speed when voltage rises, but 10x slower when
+  // it drops, so a brief sag under load doesn't make the needle jump.
+  const GAUGE_TRANSITION_NORMAL = '3.5s';
+  const GAUGE_TRANSITION_SLOW = '35s';
+  let lastGaugeVoltage = null;
+
+  function setGaugeTransitionSpeed(duration) {
+    const needle = document.getElementById('gaugeNeedle');
+    if (needle) needle.style.transitionDuration = duration;
+  }
+
   function updateGaugeNeedle(voltage) {
+    if (lastGaugeVoltage !== null) {
+      if (voltage < lastGaugeVoltage) {
+        setGaugeTransitionSpeed(GAUGE_TRANSITION_SLOW);
+      } else if (voltage > lastGaugeVoltage) {
+        setGaugeTransitionSpeed(GAUGE_TRANSITION_NORMAL);
+      }
+    }
+    lastGaugeVoltage = voltage;
     setGaugeAngle(gaugeAngleFor(voltage));
     const readout = document.getElementById('gaugeReadout');
     if (readout) readout.textContent = voltage.toFixed(2) + ' V';
   }
 
   function resetGaugeNeedle() {
+    lastGaugeVoltage = null;
+    setGaugeTransitionSpeed(GAUGE_TRANSITION_NORMAL);
     setGaugeAngle(GAUGE_MIN_ANGLE);
     const readout = document.getElementById('gaugeReadout');
     if (readout) readout.textContent = '-- V';
