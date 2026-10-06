@@ -1439,6 +1439,23 @@
     if (needle) needle.style.transitionDuration = duration;
   }
 
+  // Damps what's actually shown: rises catch up quickly, but drops (motor
+  // load sag) only nudge the displayed value a little per reading, so a
+  // brief dip while driving doesn't read as a big voltage drop.
+  const DISPLAY_SMOOTH_UP = 0.5;
+  const DISPLAY_SMOOTH_DOWN = 0.06;
+  let displayedVoltage = null;
+
+  function filterDisplayVoltage(raw) {
+    if (displayedVoltage === null) {
+      displayedVoltage = raw;
+      return displayedVoltage;
+    }
+    const alpha = raw < displayedVoltage ? DISPLAY_SMOOTH_DOWN : DISPLAY_SMOOTH_UP;
+    displayedVoltage += (raw - displayedVoltage) * alpha;
+    return displayedVoltage;
+  }
+
   function updateGaugeNeedle(voltage) {
     if (lastGaugeVoltage !== null) {
       if (voltage < lastGaugeVoltage) {
@@ -1455,6 +1472,7 @@
 
   function resetGaugeNeedle() {
     lastGaugeVoltage = null;
+    displayedVoltage = null;
     setGaugeTransitionSpeed(GAUGE_TRANSITION_NORMAL);
     setGaugeAngle(GAUGE_MIN_ANGLE);
     const readout = document.getElementById('gaugeReadout');
@@ -1697,7 +1715,7 @@
       }
       if (typeof data.battery === 'number') {
         const calibrated = data.battery * BATTERY_CALIBRATION;
-        updateGaugeNeedle(calibrated);
+        updateGaugeNeedle(filterDisplayVoltage(calibrated));
       }
     };
   }
